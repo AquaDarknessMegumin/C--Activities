@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage"
+             BackgroundColor="#0A0B10">
+
+    <Grid>
+        <!-- Dynamic Gradient Background -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0E121E" Offset="0.0" />
+                <GradientStop Color="#1A2035" Offset="0.5" />
+                <GradientStop Color="#170A25" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="25,50,25,30" Spacing="25">
+                
+                <!-- Header Section -->
+                <VerticalStackLayout Spacing="8" Margin="0,0,0,10">
+                    <Label Text="Body Mass"
+                           FontSize="40"
+                           FontAttributes="Bold"
+                           TextColor="#E2E8F0" />
+                    <Label Text="Index Calculator"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="#8B5CF6" />
+                    <Label Text="Track your fitness journey with precision"
+                           FontSize="14"
+                           TextColor="#94A3B8"
+                           Margin="0,5,0,0"/>
+                </VerticalStackLayout>
+
+                <!-- Input Section -->
+                <Border StrokeShape="RoundRectangle 24"
+                        StrokeThickness="1"
+                        Stroke="#2A3042"
+                        BackgroundColor="#151A2B"
+                        Padding="25">
+                    <VerticalStackLayout Spacing="20">
+                        <!-- Height Input -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="HEIGHT"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   CharacterSpacing="1.5"
+                                   TextColor="#64748B" />
+                            
+                            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                                <Entry x:Name="HeightEntry"
+                                       Grid.Column="0"
+                                       Placeholder="0"
+                                       Keyboard="Numeric"
+                                       FontSize="28"
+                                       FontAttributes="Bold"
+                                       TextColor="#F8FAFC"
+                                       PlaceholderColor="#475569"
+                                       BackgroundColor="Transparent" />
+                                <Label Grid.Column="1"
+                                       Text="cm"
+                                       FontSize="18"
+                                       TextColor="#94A3B8"
+                                       VerticalOptions="Center" />
+                            </Grid>
+                            <BoxView HeightRequest="1" Color="#2A3042" />
+                        </VerticalStackLayout>
+
+                        <!-- Weight Input -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="WEIGHT"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   CharacterSpacing="1.5"
+                                   TextColor="#64748B" />
+                            
+                            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                                <Entry x:Name="WeightEntry"
+                                       Grid.Column="0"
+                                       Placeholder="0"
+                                       Keyboard="Numeric"
+                                       FontSize="28"
+                                       FontAttributes="Bold"
+                                       TextColor="#F8FAFC"
+                                       PlaceholderColor="#475569"
+                                       BackgroundColor="Transparent" />
+                                <Label Grid.Column="1"
+                                       Text="kg"
+                                       FontSize="18"
+                                       TextColor="#94A3B8"
+                                       VerticalOptions="Center" />
+                            </Grid>
+                            <BoxView HeightRequest="1" Color="#2A3042" />
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Calculate Button -->
+                <Button Text="Calculate BMI"
+                        Clicked="OnCalculateClicked"
+                        CornerRadius="20"
+                        HeightRequest="60"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        CharacterSpacing="0.5"
+                        Margin="0,10,0,10">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#8B5CF6" Offset="0.0" />
+                            <GradientStop Color="#6D28D9" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <!-- Result Section -->
+                <Border x:Name="ResultCard"
+                        StrokeShape="RoundRectangle 24"
+                        StrokeThickness="1"
+                        Stroke="#2A3042"
+                        BackgroundColor="#151A2B"
+                        Padding="25"
+                        IsVisible="False"
+                        Opacity="0">
+                    <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
+                        <Label Text="YOUR BMI"
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               CharacterSpacing="1.5"
+                               TextColor="#64748B"
+                               HorizontalOptions="Center" />
+                        
+                        <Label x:Name="BmiValueLabel"
+                               Text="--"
+                               FontSize="56"
+                               FontAttributes="Bold"
+                               TextColor="#F8FAFC"
+                               HorizontalOptions="Center" />
+                        
+                        <Border Padding="15,8"
+                                StrokeShape="RoundRectangle 12"
+                                StrokeThickness="0"
+                                x:Name="CategoryBorder"
+                                BackgroundColor="#22283A"
+                                HorizontalOptions="Center">
+                            <Label x:Name="CategoryLabel"
+                                   Text="--"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#10B981" />
+                        </Border>
+
+                        <Label x:Name="MessageLabel"
+                               Text=""
+                               FontSize="14"
+                               TextColor="#94A3B8"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,5,0,0"/>
+
+                        <!-- Custom Progress Bar -->
+                        <Grid Margin="0,15,0,0" x:Name="ProgressBarContainer">
+                            <BoxView HeightRequest="8" CornerRadius="4" Color="#2A3042" HorizontalOptions="Fill" />
+                            <BoxView x:Name="BmiIndicator" 
+                                     HeightRequest="8" 
+                                     CornerRadius="4" 
+                                     Color="#10B981" 
+                                     HorizontalOptions="Start" 
+                                     WidthRequest="0" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
