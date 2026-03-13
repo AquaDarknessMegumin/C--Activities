@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDo.Views.EditCompletedToDoPage"
+             Title="Edit Completed Task"
+             BackgroundColor="#F5F5F5">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+            <Label Text="Edit Completed Task"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#333333" />
+
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="5" HasShadow="False" BorderColor="#E0E0E0">
+                <Entry x:Name="ItemNameEntry"
+                       Placeholder="Task Name"
+                       FontSize="16"
+                       TextColor="#333333" />
+            </Frame>
+
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="5" HasShadow="False" BorderColor="#E0E0E0">
+                <Editor x:Name="ItemDescriptionEditor"
+                        Placeholder="Description"
+                        FontSize="16"
+                        TextColor="#333333"
+                        HeightRequest="120"
+                        AutoSize="TextChanges" />
+            </Frame>
+
+            <Button Text="Update Task"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Clicked="OnUpdateClicked" />
+
+            <Button Text="Mark as Active"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Clicked="OnMarkActiveClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
