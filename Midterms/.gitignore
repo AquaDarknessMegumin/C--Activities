@@ -1,0 +1,11 @@
+# .NET MAUI build artifacts
+bin/
+obj/
+.vs/
+*.user
+*.suo
+.DS_Store
+
+# NuGet
+*.nupkg
+packages/
