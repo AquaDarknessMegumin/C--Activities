@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ToDo.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ToDo.Views"
+    Title="ToDo">
+
+    <TabBar>
+        <ShellContent
+            Title="Tasks"
+            Icon="icon_tasks.png"
+            ContentTemplate="{DataTemplate views:ToDoPage}"
+            Route="ToDoPage" />
+
+        <ShellContent
+            Title="Completed"
+            Icon="icon_completed.png"
+            ContentTemplate="{DataTemplate views:CompletedToDoPage}"
+            Route="CompletedToDoPage" />
+
+        <ShellContent
+            Title="Profile"
+            Icon="icon_profile.png"
+            ContentTemplate="{DataTemplate views:ProfilePage}"
+            Route="ProfilePage" />
+    </TabBar>
+
+</Shell>
